@@ -130,5 +130,27 @@
         output2.innerHTML = this.value;
     }
 </script>
+<script type="text/javascript">
+    var connection = new WebSocket('ws://88.200.88.42:12345');
+    setInterval(function(){
+    var slider1 = document.getElementById("smerRange");
+    var output1 = document.getElementById("smerText");
+    var slider2 = document.getElementById("hitrostRange");
+    var output2 = document.getElementById("hitrostText");
+    randomNum = Math.floor((Math.random() - 0.5) * 10);
+    newVal = parseInt(slider1.value) + randomNum;
+    slider1.value = newVal;
+    randomNum = Math.floor((Math.random() - 0.5) * 10);
+    newVal = parseInt(slider2.value) + randomNum;
+    slider2.value = newVal;
+    output1.innerHTML = slider1.value;
+    output2.innerHTML = slider2.value;
+    message = slider1.value + " " + slider2.value;
+
+    //connection.onopen = function() {
+        connection.send(message);
+    //};
+    } , 1000);
+</script>
 </body>
 </html>
