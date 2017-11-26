@@ -147,9 +147,11 @@
     output2.innerHTML = slider2.value;
     message = slider1.value + " " + slider2.value;
 
-    //connection.onopen = function() {
-        connection.send(message);
-    //};
+    connection.send(message);
+    /*connection.onmessage = function (event) {
+      console.log(event.data);
+    }*/
+
     } , 1000);
 </script>
 </body>
